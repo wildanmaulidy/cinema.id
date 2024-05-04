@@ -13,7 +13,7 @@ const Tiket = () => {
         { id: 1, nama: 'Avengers: Endgame', harga: 50000 },
         { id: 2, nama: 'Spider-Man: No Way Home', harga: 45000 },
         { id: 3, nama: 'Black Widow', harga: 40000 },
-       
+        
     ];
 
     useEffect(() => {
@@ -28,6 +28,15 @@ const Tiket = () => {
         setTiket({ ...tiket, total: total });
     };
 
+    const pesanSekarang = () => {
+        const { nama, jumlah, total } = tiket;
+        if (nama && jumlah > 0 && total > 0) {
+            alert(`Tiket ${nama} (${jumlah} tiket) Berhasil di Pesan!\nTotal Harga: Rp ${total}`);
+        } else {
+            alert("Silakan lengkapi pesanan Anda terlebih dahulu.");
+        }
+    };
+
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={styles.filmItem}
@@ -37,10 +46,6 @@ const Tiket = () => {
             <Text style={styles.filmText}>Rp {item.harga}</Text>
         </TouchableOpacity>
     );
-
-    const pesanSekarang = () => {
-        alert(`Tiket ${tiket.nama} telah dipesan!`);
-    };
 
     return (
         <View style={styles.container}>
