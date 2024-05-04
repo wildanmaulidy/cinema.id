@@ -54,7 +54,21 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="CINEMA ID" component={MyTabs} />
+        <Stack.Screen
+          name="BIOSKOP CINEMA.ID"
+          component={MyTabs}
+          options={{
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: 'blue', 
+            },
+            headerTintColor: '#fff', 
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: 'bold',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
