@@ -31,7 +31,7 @@ const Tiket = () => {
     const pesanSekarang = () => {
         const { nama, jumlah, total } = tiket;
         if (nama && jumlah > 0 && total > 0) {
-            alert(`Tiket ${nama} (${jumlah} tiket) Berhasil di Pesan!\nTotal Harga: Rp ${total}`);
+            alert(`Tiket ${nama} (${jumlah} tiket) Anda Berhasil di Pesan!\nTotal Harga: Rp ${total}`);
         } else {
             alert("Silakan lengkapi pesanan Anda terlebih dahulu.");
         }
