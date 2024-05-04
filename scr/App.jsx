@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,6 +18,8 @@ function MyTabs() {
       tabBarOptions={{
         style: styles.tabBar,
         labelStyle: styles.tabLabel,
+        activeTintColor: 'blue', // Warna teks saat aktif
+        inactiveTintColor: 'gray', // Warna teks saat tidak aktif
       }}
     >
       <Tab.Screen name="Beranda" component={Beranda}
@@ -54,10 +56,6 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="CINEMA ID" component={MyTabs} />
       </Stack.Navigator>
-      {/* Chat Button */}
-      <TouchableOpacity style={styles.chatButton}>
-        <MaterialCommunityIcons name="chat" color="white" size={26} />
-      </TouchableOpacity>
     </NavigationContainer>
   );
 }
@@ -75,18 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-  },
-  chatButton: {
-    position: 'absolute',
-    bottom: 70, // Penyesuaian posisi tombol chat
-    right: 20,
-    backgroundColor: 'blue',
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5,
+    color: 'purple', // Warna teks label tab
   },
 });
 

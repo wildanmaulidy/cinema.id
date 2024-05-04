@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
+        color: '#007BFF', // Warna biru
     },
     text: {
         fontSize: 18,
