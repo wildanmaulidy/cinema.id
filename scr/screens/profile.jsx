@@ -1,7 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
+  const handleGoBack = () => {
+    navigation.navigate('Beranda');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Profil Kami</Text>
@@ -19,6 +23,9 @@ const Profile = () => {
         <Text style={styles.boldText}>Riwayat:</Text>{'\n'}
         Didirikan pada tahun 2010, kami telah melayani ribuan pelanggan dan terus berkembang menjadi salah satu platform pemesanan tiket bioskop terkemuka di Indonesia.
       </Text>
+      <TouchableOpacity style={styles.button} onPress={handleGoBack}>
+        <Text style={styles.buttonText}>Kembali ke Beranda</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -31,26 +38,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 30,
-    backgroundColor: '#fff', // Warna latar belakang
+    backgroundColor: '#fff', 
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#333', // Warna font untuk judul
+    color: '#333',
   },
   text: {
     fontSize: 16,
     marginBottom: 15,
-    color: '#555', // Warna untuk teks
-    textAlign: 'center', // Teks rata tengah
+    color: '#555', 
+    textAlign: 'center',
   },
   boldText: {
     fontWeight: 'bold',
-    color: '#333', // Warna untuk teks tebal
+    color: '#333', 
   },
   history: {
     fontStyle: 'italic',
     marginTop: 20,
+  },
+  button: {
+    backgroundColor: 'blue',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 5,
+    marginTop: 20,
+    elevation: 3,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });

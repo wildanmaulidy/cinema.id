@@ -18,8 +18,8 @@ function MyTabs() {
       tabBarOptions={{
         style: styles.tabBar,
         labelStyle: styles.tabLabel,
-        activeTintColor: 'blue', // Warna teks saat aktif
-        inactiveTintColor: 'gray', // Warna teks saat tidak aktif
+        activeTintColor: 'blue',
+        inactiveTintColor: 'gray', 
       }}
     >
       <Tab.Screen name="Beranda" component={Beranda}
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: 'purple', // Warna teks label tab
+    color: 'purple', 
   },
 });
 

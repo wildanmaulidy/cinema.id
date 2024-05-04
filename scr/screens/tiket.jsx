@@ -13,7 +13,7 @@ const Tiket = () => {
         { id: 1, nama: 'Avengers: Endgame', harga: 50000 },
         { id: 2, nama: 'Spider-Man: No Way Home', harga: 45000 },
         { id: 3, nama: 'Black Widow', harga: 40000 },
-        // Tambahkan film lain di sini sesuai kebutuhan
+       
     ];
 
     useEffect(() => {
@@ -39,7 +39,6 @@ const Tiket = () => {
     );
 
     const pesanSekarang = () => {
-        // Implementasi logika untuk pesan tiket
         alert(`Tiket ${tiket.nama} telah dipesan!`);
     };
 
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
         color: 'blue',
     },
     pesanButton: {
-        backgroundColor: 'green', // Ganti warna menjadi hijau
+        backgroundColor: 'green',
         paddingVertical: 12,
         paddingHorizontal: 30,
         borderRadius: 5,
