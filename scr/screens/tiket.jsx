@@ -60,6 +60,9 @@ const Tiket = () => {
                 data={daftarFilm}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.flatListContent}
                 style={styles.list}
             />
             <View style={styles.infoContainer}>
@@ -69,7 +72,7 @@ const Tiket = () => {
                     value={tiket.harga.toString()}
                     keyboardType="numeric"
                     onChangeText={(text) => setTiket({ ...tiket, harga: parseFloat(text) })}
-                    editable={false} 
+                    editable={false}
                 />
                 <Text style={styles.label}>Jumlah:</Text>
                 <TextInput
@@ -114,20 +117,25 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         width: '100%',
     },
+    flatListContent: {
+        alignItems: 'flex-start',
+        paddingVertical: 10,
+    },
     filmItem: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 10,
         paddingHorizontal: 20,
         backgroundColor: '#f0f0f0',
-        marginBottom: 5,
+        marginHorizontal: 5,
         borderRadius: 5,
     },
     filmText: {
         fontSize: 16,
         color: '#333',
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     infoContainer: {
         width: '100%',

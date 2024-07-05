@@ -14,7 +14,7 @@ const Register = ({ navigation }) => {
         }
         console.log('User Registered:', { username, email, password });
         // Navigasi ke layar utama setelah registrasi berhasil
-        navigation.navigate('Main');
+        navigation.navigate('SINEMA.ID');
     };
 
     return (

@@ -61,7 +61,7 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Main"
+          name="SINEMA.ID"
           component={MyTabs}
           options={{
             headerTitleAlign: 'center',
