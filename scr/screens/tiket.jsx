@@ -13,7 +13,13 @@ const Tiket = () => {
         { id: 1, nama: 'Avengers: Endgame', harga: 50000 },
         { id: 2, nama: 'Spider-Man: No Way Home', harga: 45000 },
         { id: 3, nama: 'Black Widow', harga: 40000 },
-        
+        { id: 4, nama: 'Doctor Strange', harga: 42000 },
+        { id: 5, nama: 'Shang-Chi', harga: 48000 },
+        { id: 6, nama: 'Eternals', harga: 47000 },
+        { id: 7, nama: 'Captain Marvel', harga: 46000 },
+        { id: 8, nama: 'Thor: Ragnarok', harga: 43000 },
+        { id: 9, nama: 'Guardians of the Galaxy', harga: 44000 },
+        { id: 10, nama: 'Black Panther', harga: 45000 },
     ];
 
     useEffect(() => {
@@ -121,6 +127,7 @@ const styles = StyleSheet.create({
     filmText: {
         fontSize: 16,
         color: '#333',
+        fontWeight: 'bold',
     },
     infoContainer: {
         width: '100%',
@@ -129,6 +136,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 5,
         color: 'blue',
+        fontWeight: 'bold',
     },
     input: {
         borderWidth: 1,
@@ -156,6 +164,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontSize: 20,
         color: 'blue',
+        fontWeight: 'bold',
     },
     pesanButton: {
         backgroundColor: 'green',

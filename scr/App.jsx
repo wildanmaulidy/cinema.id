@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import Register from './screens/register'; // Asumsikan Register ada di folder screens
 import Beranda from './screens/beranda';
 import Profile from './screens/profile';
 import Tiket from './screens/tiket';
@@ -53,9 +54,14 @@ function MyTabs() {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Register">
         <Stack.Screen
-          name="BIOSKOP CINEMA.ID"
+          name="Register"
+          component={Register}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Main"
           component={MyTabs}
           options={{
             headerTitleAlign: 'center',

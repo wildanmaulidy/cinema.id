@@ -11,6 +11,16 @@ const Beranda = ({ navigation }) => {
                 onPress={() => navigation.navigate('Tiket')}>
                 <Text style={styles.buttonText}>Pilih Tiket</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('Register')}>
+                <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('ChatAdmin')}>
+                <Text style={styles.buttonText}>Chat dengan Admin</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -32,13 +42,14 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         textAlign: 'center',
+        marginBottom: 20,
     },
     button: {
         backgroundColor: '#4CAF50',
         paddingVertical: 15,
         paddingHorizontal: 40,
         borderRadius: 30,
-        marginTop: 20,
+        marginTop: 10,
     },
     buttonText: {
         color: '#fff',
