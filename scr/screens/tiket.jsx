@@ -51,7 +51,7 @@ const Tiket = () => {
             onPress={() => setTiket({ ...tiket, nama: item.nama, harga: item.harga })}
         >
             <Text style={styles.filmText}>{item.nama}</Text>
-            <Text style={styles.filmText}>Rp {item.harga}</Text>
+            <Text style={styles.filmPrice}>Rp {item.harga}</Text>
         </TouchableOpacity>
     );
 
@@ -127,18 +127,18 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     flatListContent: {
-        alignItems: 'flex-start',
+        alignItems: 'center',
         paddingVertical: 10,
     },
     filmItem: {
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 10,
         paddingHorizontal: 20,
         backgroundColor: '#f0f0f0',
         marginHorizontal: 5,
-        borderRadius: 5,
+        borderRadius: 10,
+        elevation: 3,
     },
     filmText: {
         fontSize: 16,
@@ -146,8 +146,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
+    filmPrice: {
+        fontSize: 16,
+        color: 'black',  // Changed to black color
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
     infoContainer: {
         width: '100%',
+        alignItems: 'center',
     },
     label: {
         fontSize: 18,
@@ -157,13 +164,15 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#ccc',
         borderRadius: 5,
         padding: 10,
         marginBottom: 15,
         fontSize: 16,
-        backgroundColor: '#333',
-        color: '#fff'
+        backgroundColor: '#fff',
+        width: 200,
+        textAlign: 'center',
+        color: 'black',  // Changed to black color
     },
     button: {
         backgroundColor: 'blue',
@@ -177,6 +186,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     total: {
         marginTop: 20,
@@ -196,6 +206,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     berandaButton: {
         backgroundColor: 'red',
@@ -209,5 +220,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
