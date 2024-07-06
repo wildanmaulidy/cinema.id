@@ -9,6 +9,7 @@ import Register from './screens/register'; // Asumsikan Register ada di folder s
 import Beranda from './screens/beranda';
 import Profile from './screens/profile';
 import Tiket from './screens/tiket';
+import admin from './screens/admin';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,6 +64,21 @@ const App = () => {
         <Stack.Screen
           name="SINEMA.ID"
           component={MyTabs}
+          options={{
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: 'blue', 
+            },
+            headerTintColor: '#fff', 
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="chatAdmin"
+          component={admin}
           options={{
             headerTitleAlign: 'center',
             headerStyle: {

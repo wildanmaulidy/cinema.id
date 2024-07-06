@@ -18,7 +18,7 @@ const Beranda = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('ChatAdmin')}>
+                onPress={() => navigation.navigate('chatAdmin')}>
                 <Text style={styles.buttonText}>Chat dengan Admin</Text>
             </TouchableOpacity>
         </View>
