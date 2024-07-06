@@ -4,9 +4,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native'
 const ChatAdmin = () => {
 
     const handleOpenWhatsApp = () => {
-        let phoneNumber = '628175030077'; // Ubah nomor sesuai kebutuhan
-        let movieQuestion = 'Silakan pilih film yang ingin Anda tonton:'; // Pertanyaan tentang film
-        let defaultMovie = 'Avengers: Endgame'; // Film default
+        let phoneNumber = '628175030077'; 
+        let movieQuestion = 'Silakan pilih film yang ingin Anda tonton:'; 
+        let defaultMovie = 'Avengers: Endgame';
 
         let message = `Halo, saya ingin bertanya tentang tiket film.\n\n${movieQuestion}\nFilm yang saya pilih: ${defaultMovie}`;
 
