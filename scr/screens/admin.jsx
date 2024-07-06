@@ -1,71 +1,198 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Linking } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
 
-const ChatAdmin = () => {
+const Tiket = () => {
+    const [tiket, setTiket] = useState({
+        nama: '',
+        harga: '',
+        jumlah: 1,
+        total: 0
+    });
 
-    const handleOpenWhatsApp = () => {
-        let phoneNumber = '628175030077'; // Ubah nomor sesuai kebutuhan
-        let movieQuestion = 'Silakan pilih film yang ingin Anda tonton:'; // Pertanyaan tentang film
-        let defaultMovie = 'Avengers: Endgame'; // Film default
+    const daftarFilm = [
+        { id: 1, nama: 'Avengers: Endgame', harga: 50000 },
+        { id: 2, nama: 'Spider-Man: No Way Home', harga: 45000 },
+        { id: 3, nama: 'Black Widow', harga: 40000 },
+        { id: 4, nama: 'Doctor Strange', harga: 42000 },
+        { id: 5, nama: 'Shang-Chi', harga: 48000 },
+        { id: 6, nama: 'Eternals', harga: 47000 },
+        { id: 7, nama: 'Captain Marvel', harga: 46000 },
+        { id: 8, nama: 'Thor: Ragnarok', harga: 43000 },
+        { id: 9, nama: 'Guardians of the Galaxy', harga: 44000 },
+        { id: 10, nama: 'Black Panther', harga: 45000 },
+    ];
 
-        let message = `Halo, saya ingin bertanya tentang tiket film.\n\n${movieQuestion}\nFilm yang saya pilih: ${defaultMovie}`;
+    useEffect(() => {
+        // Set default movie when component mounts
+        if (daftarFilm.length > 0) {
+            const filmPertama = daftarFilm[0];
+            setTiket({ ...tiket, nama: filmPertama.nama, harga: filmPertama.harga });
+        }
+    }, []);
 
-        let url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-        Linking.openURL(url).then((data) => {
-            console.log('WhatsApp Opened');
-        }).catch(() => {
-            alert('Pastikan WhatsApp sudah terinstall pada perangkat Anda.');
-        });
+    const hitungTotal = () => {
+        const total = tiket.harga * tiket.jumlah;
+        setTiket({ ...tiket, total: total });
     };
+
+    const pesanSekarang = () => {
+        const { nama, jumlah, total } = tiket;
+        if (nama && jumlah > 0 && total > 0) {
+            alert(`Tiket ${nama} (${jumlah} tiket) Anda Berhasil di Pesan!\nTotal Harga: Rp ${total}`);
+        } else {
+            alert("Silakan lengkapi pesanan Anda terlebih dahulu.");
+        }
+    };
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity
+            style={styles.filmItem}
+            onPress={() => setTiket({ ...tiket, nama: item.nama, harga: item.harga })}
+        >
+            <Text style={styles.filmText}>{item.nama}</Text>
+            <Text style={styles.filmText}>Rp {item.harga}</Text>
+        </TouchableOpacity>
+    );
 
     return (
         <View style={styles.container}>
-           
-            <Text style={styles.title}>Penjualan Tiket Bioskop</Text>
-            <Text style={styles.subtitle}>Selamat datang di aplikasi penjualan tiket bioskop</Text>
-            <TouchableOpacity onPress={handleOpenWhatsApp} style={styles.button}>
-                <Text style={styles.buttonText}>Chat dengan Admin via WhatsApp</Text>
-            </TouchableOpacity>
+            <Text style={styles.title}>Pemesanan Tiket Bioskop</Text>
+            <FlatList
+                data={daftarFilm}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.flatListContent}
+                style={styles.list}
+            />
+            {tiket.nama ? ( // Conditional rendering based on whether a movie is selected
+                <View style={styles.infoContainer}>
+                    <Text style={styles.label}>Harga Tiket:</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={tiket.harga.toString()}
+                        keyboardType="numeric"
+                        onChangeText={(text) => setTiket({ ...tiket, harga: parseFloat(text) })}
+                        editable={false}
+                    />
+                    <Text style={styles.label}>Jumlah:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Masukkan jumlah tiket"
+                        keyboardType="numeric"
+                        onChangeText={(text) => setTiket({ ...tiket, jumlah: parseInt(text) })}
+                    />
+                </View>
+            ) : null}
+            {tiket.nama ? ( // Conditional rendering for buttons only when a movie is selected
+                <>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={hitungTotal}>
+                        <Text style={styles.buttonText}>Hitung Total</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.total}>Total Harga: Rp {tiket.total}</Text>
+                    <TouchableOpacity
+                        style={styles.pesanButton}
+                        onPress={pesanSekarang}>
+                        <Text style={styles.pesanButtonText}>Pesan Sekarang</Text>
+                    </TouchableOpacity>
+                </>
+            ) : null}
         </View>
     );
 }
+
+export default Tiket;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F0F0F0',
         paddingHorizontal: 20,
-    },
-    logo: {
-        width: 150,
-        height: 150,
-        marginBottom: 30,
+        backgroundColor: '#fff',
     },
     title: {
-        fontSize: 28,
+        fontSize: 24,
+        marginBottom: 20,
         fontWeight: 'bold',
-        marginBottom: 10,
-        color: '#007BFF', 
+        color: 'blue',
     },
-    subtitle: {
-        fontSize: 18,
+    list: {
+        marginBottom: 20,
+        width: '100%',
+    },
+    flatListContent: {
+        alignItems: 'flex-start',
+        paddingVertical: 10,
+    },
+    filmItem: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        backgroundColor: '#f0f0f0',
+        marginHorizontal: 5,
+        borderRadius: 5,
+    },
+    filmText: {
+        fontSize: 16,
+        color: '#333',
+        fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 30,
+    },
+    infoContainer: {
+        width: '100%',
+    },
+    label: {
+        fontSize: 18,
+        marginBottom: 5,
+        color: 'blue',
+        fontWeight: 'bold',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: 'black',
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 15,
+        fontSize: 16,
+        backgroundColor: '#333',
+        color: '#fff'
     },
     button: {
-        backgroundColor: '#4CAF50',
-        paddingVertical: 15,
-        paddingHorizontal: 40,
-        borderRadius: 30,
+        backgroundColor: 'blue',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 5,
+        marginTop: 20,
+        elevation: 3,
     },
     buttonText: {
-        color: '#fff',
+        color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
-        textAlign: 'center',
+    },
+    total: {
+        marginTop: 20,
+        fontSize: 20,
+        color: 'blue',
+        fontWeight: 'bold',
+    },
+    pesanButton: {
+        backgroundColor: 'green',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 5,
+        marginTop: 20,
+        elevation: 3,
+    },
+    pesanButtonText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 });
-
-export default ChatAdmin;

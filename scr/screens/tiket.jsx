@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Tiket = () => {
+    const navigation = useNavigation();
     const [tiket, setTiket] = useState({
         nama: '',
         harga: '',
@@ -65,23 +67,25 @@ const Tiket = () => {
                 contentContainerStyle={styles.flatListContent}
                 style={styles.list}
             />
-            <View style={styles.infoContainer}>
-                <Text style={styles.label}>Harga Tiket:</Text>
-                <TextInput
-                    style={styles.input}
-                    value={tiket.harga.toString()}
-                    keyboardType="numeric"
-                    onChangeText={(text) => setTiket({ ...tiket, harga: parseFloat(text) })}
-                    editable={false}
-                />
-                <Text style={styles.label}>Jumlah:</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Masukkan jumlah tiket"
-                    keyboardType="numeric"
-                    onChangeText={(text) => setTiket({ ...tiket, jumlah: parseInt(text) })}
-                />
-            </View>
+            {tiket.nama ? (
+                <View style={styles.infoContainer}>
+                    <Text style={styles.label}>Harga Tiket:</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={tiket.harga.toString()}
+                        keyboardType="numeric"
+                        onChangeText={(text) => setTiket({ ...tiket, harga: parseFloat(text) })}
+                        editable={false}
+                    />
+                    <Text style={styles.label}>Jumlah:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Masukkan jumlah tiket"
+                        keyboardType="numeric"
+                        onChangeText={(text) => setTiket({ ...tiket, jumlah: parseInt(text) })}
+                    />
+                </View>
+            ) : null}
             <TouchableOpacity
                 style={styles.button}
                 onPress={hitungTotal}>
@@ -92,6 +96,11 @@ const Tiket = () => {
                 style={styles.pesanButton}
                 onPress={pesanSekarang}>
                 <Text style={styles.pesanButtonText}>Pesan Sekarang</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.berandaButton}
+                onPress={() => navigation.navigate('Beranda')}>
+                <Text style={styles.berandaButtonText}>Kembali ke Beranda</Text>
             </TouchableOpacity>
         </View>
     );
@@ -148,12 +157,13 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: 'blue',
+        borderColor: 'black', // Ubah warna border menjadi hitam
         borderRadius: 5,
         padding: 10,
         marginBottom: 15,
         fontSize: 16,
-        backgroundColor: '#f9f9f9',
+        backgroundColor: '#333', // Ubah warna latar belakang menjadi hitam
+        color: '#fff' // Ubah warna teks menjadi putih
     },
     button: {
         backgroundColor: 'blue',
@@ -183,6 +193,19 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     pesanButtonText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    berandaButton: {
+        backgroundColor: 'red',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 5,
+        marginTop: 20,
+        elevation: 3,
+    },
+    berandaButtonText: {
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
