@@ -157,13 +157,13 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: 'black', // Ubah warna border menjadi hitam
+        borderColor: 'black',
         borderRadius: 5,
         padding: 10,
         marginBottom: 15,
         fontSize: 16,
-        backgroundColor: '#333', // Ubah warna latar belakang menjadi hitam
-        color: '#fff' // Ubah warna teks menjadi putih
+        backgroundColor: '#333',
+        color: '#fff'
     },
     button: {
         backgroundColor: 'blue',

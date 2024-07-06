@@ -7,13 +7,11 @@ const Register = ({ navigation }) => {
     const [password, setPassword] = useState('');
 
     const handleRegister = () => {
-        // Lakukan validasi atau logika registrasi di sini
         if (!username || !email || !password) {
             alert('Harap lengkapi semua kolom');
             return;
         }
         console.log('User Registered:', { username, email, password });
-        // Navigasi ke layar utama setelah registrasi berhasil
         navigation.navigate('SINEMA.ID');
     };
 

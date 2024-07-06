@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Register from './screens/register'; // Asumsikan Register ada di folder screens
+import Register from './screens/register';
 import Beranda from './screens/beranda';
 import Profile from './screens/profile';
 import Tiket from './screens/tiket';
