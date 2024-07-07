@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     },
     filmPrice: {
         fontSize: 16,
-        color: 'black',  // Changed to black color
+        color: 'black',
         fontWeight: 'bold',
         textAlign: 'center',
     },
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: 200,
         textAlign: 'center',
-        color: 'black',  // Changed to black color
+        color: 'black', 
     },
     button: {
         backgroundColor: 'blue',
